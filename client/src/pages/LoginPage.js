@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authentication";
 
 function LoginPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const { login, state } = useAuth();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -50,6 +52,13 @@ function LoginPage() {
         </div>
         {state.error && <h1 className="error-message">Error: {state.error}</h1>}
         <div className="form-actions">
+          <button
+            onClick={() => {
+              navigate("/register");
+            }}
+          >
+            Register
+          </button>
           <button type="submit">Login</button>
         </div>
       </form>

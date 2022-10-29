@@ -85,4 +85,22 @@ postsRouter.delete("/:postId", async (req, res) => {
   return res.json({ message: "Post has been deleted Successfully" });
 });
 
+// postsRouter.post("/:postId/comments", async (req, res) => {
+//   console.log(req.body);
+//   const commentId = req.body.comment_id;
+//   const postId = req.params.postId;
+//   const content = req.body.content;
+//   const likes = req.body.likes;
+//   const videoUrl = req.body.video;
+//   const imageUrl = req.body.image;
+//   const createdAt = new Date();
+//   const updatedAt = new Date();
+//   const userId = req.body.user_id;
+//   await pool.query(
+//     `INSERT INTO comments(post_id,comment_content,comment_likes,comment_video_url,comment_image_url,craeted_at,updated_at,user_id) VALUES($1,$2,$3,$4,$5,$6,$7,$8)`,
+//     [postId, content, likes, videoUrl, imageUrl, createdAt, updatedAt, userId]
+//   );
+//   return res.json({ message: "Created a new comment Successfully" });
+// });
+
 export default postsRouter;

@@ -9,15 +9,15 @@ const port = 4000;
 app.use(bodyParser.json());
 
 app.post("/register", async (req, res) => {
-  //console.log(req.body);
-  const userId = req.body.user_id;
   const username = req.body.username;
   const password = req.body.password;
   const firstname = req.body.firstName;
   const lastname = req.body.lastName;
+  const created_at = new Date();
+  const updated_at = new Date();
   await pool.query(
-    "INSERT INTO users (user_id, username, password, first_name,last_name) VALUES ($1,$2,$3,$4,$5);",
-    [userId, username, password, firstname, lastname]
+    "INSERT INTO users (username, password, first_name,last_name,created_at,updated_at) VALUES ($1,$2,$3,$4,$5,$6);",
+    [username, password, firstname, lastname, created_at, updated_at]
   );
   return res.json({
     message: "Created a new User successfully",
